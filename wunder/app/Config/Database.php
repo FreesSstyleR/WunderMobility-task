@@ -32,10 +32,10 @@ class Database extends Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => '',
-		'password' => '',
-		'database' => '',
+		'hostname' => 'mysql',
+		'username' => 'codeigniter_user',
+		'password' => 'db_password',
+		'database' => 'wunder_db',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
@@ -85,10 +85,25 @@ class Database extends Config
 		// Ensure that we always set the database group to 'tests' if
 		// we are currently running an automated test suite, so that
 		// we don't overwrite live data on accident.
-		if (ENVIRONMENT === 'testing')
-		{
+		if (ENVIRONMENT === 'testing') {
 			$this->defaultGroup = 'tests';
 		}
+
+		echo '<pre>';
+		var_dump($this->default);
+		echo '</pre>';
+
+		echo 'Connecting to database: ' . $this->default['database'];
+		$dbh = mysql_connect(
+			$this->default['hostname'],
+			$this->default['username'],
+			$this->default['password']
+		)
+			or die('Cannot connect to the database because: ' . mysql_error());
+		mysql_select_db($this->default['database']);
+
+		echo '<br />   Connected OK:';
+		die('file: ' . __FILE__ . ' Line: ' . __LINE__);
 	}
 
 	//--------------------------------------------------------------------

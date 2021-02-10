@@ -19,6 +19,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'form_step_filter' => \App\Filters\FormStepFilter::class,
 	];
 
 	/**
@@ -36,6 +37,7 @@ class Filters extends BaseConfig
 			'toolbar',
 			// 'honeypot',
 		],
+
 	];
 
 	/**
@@ -47,7 +49,11 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $methods = [];
+	public $methods = [
+		'get' => [
+			'form_step_filter'
+		]
+	];
 
 	/**
 	 * List of filter aliases that should run on any
@@ -58,5 +64,13 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $filters = [];
+	public $filters = [
+		'form_step_filter' => [
+			'before' => [
+				'/',
+				'/payment',
+				'/address'
+			]
+		]
+	];
 }

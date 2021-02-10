@@ -24,7 +24,10 @@ RUN docker-php-ext-install \
     opcache \
     calendar \
     pdo_mysql \
-    mysqli
+    mysqli \
+    mysql \
+    pdo
+
 
 COPY apache_php/000-default.conf /etc/apache2/sites-available/000-default.conf
 
@@ -37,14 +40,12 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
 RUN composer self-update
 
-COPY wunder/ /var/www/html/
+WORKDIR /var/www/html
 
-# 6. we need a user with the same UID/GID with host user
-# so when we execute CLI commands, all the host file's ownership remains intact
-# otherwise command from inside container will create root-owned files and directories
-ARG uid
-RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
-RUN mkdir -p /home/devuser/.composer && \
-    chown -R devuser:devuser /home/devuser
+RUN git clone https://github.com/FreesSstyleR/wunderMobility-task.git
+# ARG uid
+# RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
+# RUN mkdir -p /home/devuser/.composer && \
+#     chown -R devuser:devuser /home/devuser
 
 EXPOSE 80

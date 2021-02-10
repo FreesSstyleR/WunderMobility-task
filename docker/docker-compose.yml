@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   db:
     build:
@@ -25,7 +25,7 @@ services:
       - APACHE_RUN_GROUP=#${UID}
     restart: unless-stopped
     volumes:
-      - ./../wunder:/var/www/html/wunder
+      - ./../wunder:/var/www/html/wunderMobility-task/wunder
       - ./../logs/apache_log:/var/log/apache2
     ports:
       - 80:80
