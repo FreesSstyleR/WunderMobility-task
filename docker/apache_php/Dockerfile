@@ -41,7 +41,6 @@ WORKDIR /var/www/html
 
 RUN git clone https://github.com/FreesSstyleR/wunderMobility-task.git
 
-COPY wunderMobility-task/wunder/.env-example wunderMobility-task/wunder/.env
 
 # ARG uid
 # RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
