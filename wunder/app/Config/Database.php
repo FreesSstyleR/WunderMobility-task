@@ -32,9 +32,9 @@ class Database extends Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'mysql',
-		'username' => 'codeigniter_user',
-		'password' => 'db_password',
+		'hostname' => 'db',
+		'username' => 'root',
+		'password' => 'codeigniter',
 		'database' => 'wunder_db',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
@@ -89,21 +89,22 @@ class Database extends Config
 			$this->defaultGroup = 'tests';
 		}
 
-		echo '<pre>';
-		var_dump($this->default);
-		echo '</pre>';
+		// echo '<pre>';
+		// var_dump($this->default);
+		// echo '</pre>';
 
-		echo 'Connecting to database: ' . $this->default['database'];
-		$dbh = mysql_connect(
-			$this->default['hostname'],
-			$this->default['username'],
-			$this->default['password']
-		)
-			or die('Cannot connect to the database because: ' . mysql_error());
-		mysql_select_db($this->default['database']);
+		// echo 'Connecting to database: ' . $this->default['database'];
+		// $dbh = mysql_connect(
+		// 	$this->default['hostname'],
+		// 	$this->default['username'],
+		// 	$this->default['password']
+		// )
+		// 	or die('Cannot connect to the database because: ' . mysql_error());
+		// mysql_select_db($this->default['database']);
 
-		echo '<br />   Connected OK:';
-		die('file: ' . __FILE__ . ' Line: ' . __LINE__);
+		// echo '<br />   Connected OK:';
+		// die('file: ' . __FILE__ . ' Line: ' . __LINE__);
+
 	}
 
 	//--------------------------------------------------------------------

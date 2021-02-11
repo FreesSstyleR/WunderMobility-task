@@ -1,4 +1,11 @@
 <form class="mt-4" method="post" action="/payment">
+
+    <?php if (isset($_SESSION['error'])) : ?>
+        <div class="alert alert-warning" role="alert">
+            <?= $_SESSION['error']; ?>
+        </div>
+    <?php endif; ?>
+
     <div class="form-group">
         <label for="account_owner">Account owner</label>
         <input type="text" class="form-control" id="account_owner" name="account_owner" placeholder="Enter the Account owner" required>

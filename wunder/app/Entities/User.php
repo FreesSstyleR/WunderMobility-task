@@ -20,5 +20,7 @@ class User extends Entity
         "created_at" => null
     ];
 
-    protected $dates = ["created_at"];
+    protected $dates = [
+        "created_at",
+    ];
 }

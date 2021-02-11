@@ -24,10 +24,7 @@ RUN docker-php-ext-install \
     opcache \
     calendar \
     pdo_mysql \
-    mysqli \
-    mysql \
-    pdo
-
+    mysqli
 
 COPY apache_php/000-default.conf /etc/apache2/sites-available/000-default.conf
 
@@ -43,6 +40,9 @@ RUN composer self-update
 WORKDIR /var/www/html
 
 RUN git clone https://github.com/FreesSstyleR/wunderMobility-task.git
+
+COPY wunderMobility-task/wunder/.env-example wunderMobility-task/wunder/.env
+
 # ARG uid
 # RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
 # RUN mkdir -p /home/devuser/.composer && \

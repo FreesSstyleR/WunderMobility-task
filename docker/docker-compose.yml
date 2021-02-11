@@ -10,7 +10,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     volumes:
-      - ./../db_data:/usr/data
+      - ./../db_data:/var/lib/mysql
     ports:
       - 3306:3306
 

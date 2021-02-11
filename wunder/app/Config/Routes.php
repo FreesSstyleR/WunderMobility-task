@@ -35,6 +35,7 @@ $routes->match(['get'], '/', 'Home::index', ['filter' => 'form_step_filter']);
 $routes->match(['post'], '/personal', 'Home::personal_info');
 $routes->match(['post'], '/address', 'Home::address_info');
 $routes->match(['post'], '/payment', 'Home::payment_info');
+$routes->match(['get'], '/success/(:num)', 'Home::success/$1');
 
 /*
  * --------------------------------------------------------------------
